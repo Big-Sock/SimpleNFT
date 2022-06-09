@@ -1,8 +1,12 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { TopBar } from "../components/TopBar";
 
-export const Home = () => {
+import uploadImg from "../assets/UploadImage.svg";
+import { TopBar } from "../components/TopBar";
+import { ProjectCard } from "../components/ProjectCard";
+import { NavLink } from "react-router-dom";
+
+export const ProjectDashboard = () => {
 	const [projectName, setProjectName] = useState(null);
 	const [projectDescription, setProjectDescription] = useState(null);
 	const [projectOwner, setProjectOwner] = useState(null);
@@ -17,38 +21,38 @@ export const Home = () => {
 		<>
 			<TopBar />
 			<Container>
-				<ProjectForm>
-					<Title>New Project</Title>
-					<InputLabel>Project Name</InputLabel>
-					<ProjectNameInput
-						placeholder="Project Name"
-						onChange={(e) => setProjectName(e.target.value)}
-					/>
-
-					<InputLabel>Project Description</InputLabel>
-					<ProjectDescriptionInput
-						placeholder="Project Description"
-						onChange={(e) => setProjectDescription(e.target.value)}
-					/>
-
-					<InputLabel>Owner (address)</InputLabel>
-					<ProjectNameInput
-						placeholder="Wallet address"
-						onChange={(e) => setProjectOwner(e.target.value)}
-					/>
-
-					<SubmitButton
-						onClick={() => {
-							storeProjectInfo();
-						}}
-					>
-						Submit
-					</SubmitButton>
-				</ProjectForm>
+				<Inner>
+					<TopRow>
+						<Title>My Projects</Title>
+						<NewProject to='/'>
+							New Project
+						</NewProject>
+					</TopRow>
+					<ProjectCard />
+				</Inner>
 			</Container>
 		</>
 	);
 };
+
+const TopRow = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
+const NewProject = styled(NavLink)`
+	width: 100px;
+	height: 40px;
+	background-color: #ed3724;
+	color: #fff;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+`;
 
 const SubmitButton = styled.div`
 	width: 100px;
@@ -88,12 +92,11 @@ const InputLabel = styled.div`
 	font-weight: 600;
 `;
 
-const ProjectForm = styled.div`
+const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
-	width: 500px;
-	max-width: 80%;
+	width: 80%;
 `;
 
 const ProjectNameInput = styled.input`
