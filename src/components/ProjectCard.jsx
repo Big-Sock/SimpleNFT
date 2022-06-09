@@ -21,12 +21,19 @@ export const ProjectCard = () => {
           </ManageButton>
         </HoveredSection>
         <NotHoveredSection>
-          <div>Owner: {localStorage.getItem('project_owner')}</div>
+          <Owner>Owner: {localStorage.getItem('project_owner')}</Owner>
         </NotHoveredSection>
       </BottomRow>
     </Container>
   )
 }
+
+const Owner = styled.span`
+text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+`
 
 const Container = styled.div`
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
@@ -57,6 +64,7 @@ const NotHoveredSection = styled.div`
   flex: 1;
   justify-content: space-between;
   padding: 18px 24px;
+  width: calc(100% - 48px);
   ${Container}:hover & {
     display: none;
   }

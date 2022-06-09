@@ -42,7 +42,7 @@ export const ManageProject = () => {
 								copyKey();
 							}}
 						>
-							API Key: 0c68187b1af03c2df2cd79ae5eb441f6
+							API Key: -----
 						</ApiKey>
 					</Row>
 					<Row>
@@ -69,9 +69,9 @@ export const ManageProject = () => {
 						</NewContract>
 					</Row>
                     <Row>
-                    <ContractCard name={'NFT Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'NFT'}/>
-                    <ContractCard name={'Token Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'Token'}/>
-                    <ContractCard name={'Marketplace Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'Marketplace'}/>
+                    <ContractCard name={'NFT Contract'} description={'Mint your very own NFT collections!'} tag={'NFT'}/>
+                    <ContractCard name={'Token Contract'} description={`This contract allows creation of tokens.`} tag={'Token'}/>
+                    <ContractCard name={'Marketplace Contract'} description={'A marketplace contract, based on OpenSea.'} tag={'Marketplace'}/>
 
                     </Row>
 					
