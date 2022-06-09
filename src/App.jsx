@@ -22,6 +22,7 @@ import { Home } from "./views/Home";
 import { ViewContract } from "./views/ViewContract";
 import { CreateCandyMachine } from "./views/CreateCandyMachine.jsx";
 import { ProjectDashboard } from "./views/ProjectDashboard";
+import { ManageProject } from "./views/ManageProject";
 
 const App = () => {
 	return (
@@ -34,6 +35,9 @@ const App = () => {
 						</Route>
             <Route path="/dashboard" exact>
 							<ProjectDashboard />
+						</Route>
+            <Route path="/manage-project" exact>
+							<ManageProject />
 						</Route>
 						<Route path="/view_contract" exact>
 							<ViewContract />

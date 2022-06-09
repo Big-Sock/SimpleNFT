@@ -16,7 +16,7 @@ export const ProjectCard = () => {
       </Row>
       <BottomRow>
         <HoveredSection>
-          <ManageButton to={`projects/${projectId}/`}>
+          <ManageButton to='/manage-project'>
             Manage Project
           </ManageButton>
         </HoveredSection>
@@ -86,7 +86,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   font-size: 14px;
-  color: #aaaaaa;
+  color: #707070;
   margin: 24px 0;
 `
 

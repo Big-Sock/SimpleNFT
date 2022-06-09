@@ -1,16 +1,19 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { TopBar } from "../components/TopBar";
+import { useHistory } from "react-router-dom";
 
 export const Home = () => {
 	const [projectName, setProjectName] = useState(null);
 	const [projectDescription, setProjectDescription] = useState(null);
 	const [projectOwner, setProjectOwner] = useState(null);
+  const history = useHistory();
 
 	const storeProjectInfo = () => {
 		localStorage.setItem("project_name", projectName);
 		localStorage.setItem("project_description", projectDescription);
 		localStorage.setItem("project_owner", projectOwner);
+    history.push('/dashboard');
 	};
 
 	return (
