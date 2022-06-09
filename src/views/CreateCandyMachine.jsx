@@ -1,5 +1,7 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
+import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+
 import {
 	MintLayout,
 	TOKEN_PROGRAM_ID,
@@ -100,6 +102,6 @@ export const CreateCandyMachine = () => {
 		}, 'processed');
 	}
 
-	if (!wallet.connected) return <WalletDialogButton>Connect</WalletDialogButton>
+	if (!wallet.connected) return <WalletMultiButton>Connect</WalletMultiButton>
 	return <button onClick={create}>button</button>
 }
