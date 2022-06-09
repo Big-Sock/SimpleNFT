@@ -8,7 +8,6 @@ export const TopBar = () => {
             <Title to='/'>SimpleNFT</Title>
             <Right>
                 <Link to='/dashboard'>Dashboard</Link>
-                <Link to='/'>Test</Link>
             </Right>
         </Container>
     )
@@ -23,7 +22,7 @@ const Right = styled.div`
 `
 
 const Link = styled(NavLink)`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   color: #06005b;
   margin: 0px;
@@ -34,7 +33,7 @@ const Link = styled(NavLink)`
 `
 
 const Title = styled(NavLink)`
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   color: #06005b;
   margin: 0px;

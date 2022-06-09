@@ -87,7 +87,8 @@ const Title = styled.div`
 const Description = styled.div`
   font-size: 14px;
   color: #707070;
-  margin: 24px 0;
+  padding-top: 12px;
+  line-height: 30px;
 `
 
 const ProjectLink = styled.a`

@@ -13,7 +13,7 @@ export const Home = () => {
 		localStorage.setItem("project_name", projectName);
 		localStorage.setItem("project_description", projectDescription);
 		localStorage.setItem("project_owner", projectOwner);
-    history.push('/dashboard');
+    history.push('/dashboard')
 	};
 
 	return (

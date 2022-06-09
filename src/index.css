@@ -76,3 +76,7 @@ p {
   margin-top: 0px;
   font-size: 22px;
 }
+
+input {
+  font-family: "Spartan", sans-serif;
+}

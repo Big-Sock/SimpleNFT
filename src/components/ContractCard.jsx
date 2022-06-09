@@ -2,10 +2,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
-export const ContractCard = () => {
-	const name = "Dummy Contract";
-	const description = "Dummy Description";
-	const tag = "NFT";
+export const ContractCard = ({name, description, tag}) => {
 
 	const location = useLocation();
 	return (
@@ -37,8 +34,7 @@ export const ContractCard = () => {
 
 const Container = styled.div`
 	box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-	width: 400px;
-	height: 180px;
+	width: 30%;
 	background-color: #ffffff;
 	display: flex;
 	overflow: hidden;
@@ -81,7 +77,7 @@ const Column = styled.div`
 	justify-content: center;
 	margin-left: 16px;
     padding-top: 5px;
-    gap: 20px;
+    gap: 8px;
 `;
 
 const DataContainer = styled.div`
@@ -103,6 +99,7 @@ const Title = styled.div`
 const Description = styled.div`
 	font-size: 14px;
 	color: #707070;
+    line-height: 24px;
 `;
 
 const Image = styled.img`

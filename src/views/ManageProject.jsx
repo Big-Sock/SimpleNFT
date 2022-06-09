@@ -33,7 +33,7 @@ export const ManageProject = () => {
 							<Title>{localStorage.getItem("project_name")}</Title>
 							<br />
 							<DescriptionHeader>Description</DescriptionHeader>
-							<DescriptionText>
+							<DescriptionText style={{maxWidth: '80%'}}>
 								{localStorage.getItem("project_description")}
 							</DescriptionText>
 						</Header>
@@ -64,11 +64,17 @@ export const ManageProject = () => {
 					<Divider />
 					<Row>
 						<Title>Saved Contracts</Title>
-                        <NewContract to='/'>
+                        <NewContract to='/deploy'>
 							New Contract
 						</NewContract>
 					</Row>
-					<ContractCard />
+                    <Row>
+                    <ContractCard name={'NFT Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'NFT'}/>
+                    <ContractCard name={'Token Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'Token'}/>
+                    <ContractCard name={'Marketplace Contract'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'} tag={'Marketplace'}/>
+
+                    </Row>
+					
 				</Inner>
 			</Container>
 		</>
@@ -156,6 +162,7 @@ const Title = styled.div`
 	font-size: 24px;
 	color: #06005b;
 	font-weight: 600;
+    padding-top: 10px;
 `;
 
 const InputLabel = styled.div`
@@ -169,7 +176,7 @@ const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 80%;
-	gap: 50px;
+	gap: 35px;
 `;
 
 const ProjectNameInput = styled.input`
