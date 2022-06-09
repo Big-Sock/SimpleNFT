@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import uploadImg from "../assets/UploadImage.svg";
 import { TopBar } from "../components/TopBar";
+import { CreateCandyMachine } from './CreateCandyMachine'
+
 export const Deploy = () => {
 	const [imageUrl, setImageUrl] = useState(uploadImg);
 	const [image, setImage] = useState(null);
@@ -18,6 +20,11 @@ export const Deploy = () => {
 		price: 0,
 		supply: 0,
 	});
+
+	const setSave = (e) => {
+		setFormFields({ ...formFields, [e.target.name]: e.target.value })
+		localStorage.setItem('formFields', JSON.stringify(formFields))
+	}
 
 	const Submit = (e, name) => {
 		alert(`${name} was clicked`);
@@ -36,18 +43,20 @@ export const Deploy = () => {
 								<NameInput>
 									<InputText>Name</InputText>
 									<Input
+										name="name"
 										type="text"
 										onChange={(e) =>
-											setFormFields({ ...formFields, name: e.target.value })
+											setSave(e)
 										}
 									/>
 								</NameInput>
 								<SymbolInput>
 									<InputText>Symbol</InputText>
 									<Input
+										name="symbol"
 										type="text"
 										onChange={(e) =>
-											setFormFields({ ...formFields, symbol: e.target.value })
+											setSave(e)
 										}
 									/>
 								</SymbolInput>
@@ -55,11 +64,9 @@ export const Deploy = () => {
 							<DescriptionInput>
 								<InputText>Description</InputText>
 								<InputArea
+									name="description"
 									onChange={(e) =>
-										setFormFields({
-											...formFields,
-											description: e.target.value,
-										})
+										setSave(e)
 									}
 								/>
 							</DescriptionInput>
@@ -67,12 +74,10 @@ export const Deploy = () => {
 							<PayoutRecipientInput>
 								<InputText>Image URL</InputText>
 								<Input
+									name="imageUrl"
 									type="text"
 									onChange={(e) =>
-										setFormFields({
-											...formFields,
-											imageUrl: e.target.value,
-										})
+										setSave(e)
 									}
 								/>
 							</PayoutRecipientInput>
@@ -84,26 +89,26 @@ export const Deploy = () => {
 							<PaymentInput>
 								<InputText>Price</InputText>
 								<Input
+									name="price"
 									type="text"
 									onChange={(e) =>
-										setFormFields({ ...formFields, price: e.target.value })
+										setSave(e)
 									}
 								/>
 							</PaymentInput>
 							<PaymentInput>
 								<InputText>Total Supply</InputText>
 								<Input
+									supply="supply"
 									type="text"
 									onChange={(e) =>
-										setFormFields({ ...formFields, supply: e.target.value })
+										setSave(e)
 									}
 								/>
 							</PaymentInput>
 						</FlexRow>
 						<FlexRow>
-							<DeployButton onClick={(e) => Submit(e, "RedOrangeText")}>
-								Deploy
-							</DeployButton>
+							<CreateCandyMachine />
 						</FlexRow>
 					</Bottom>
 				</FlexColumn>

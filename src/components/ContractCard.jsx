@@ -17,7 +17,7 @@ export const ContractCard = ({name, description, tag}) => {
 			</Row>
 			<DataContainer>
 				<HoveredSection>
-					<ManageButton to={`contracts/1/${location.search}`}>
+					<ManageButton to={`deploy`}>
 						View
 					</ManageButton>
 					{/* {isSaved && !isDeployed && (

@@ -2,67 +2,71 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { ReactComponent as CopyIcon } from "../assets/copy-solid.svg";
+import { TopBar } from "../components/TopBar";
 
 export const ViewContract = () => {
-  const [formFields, setFormFields] = useState({
-    name: "testtest",
-    symbol: "test",
-    description: "some description here",
-    saleRecipient: "",
-    royaltyRecipient: "",
-    percentage: 0,
-  });
+  let formFields = localStorage.getItem('formFields')
+
+  if (formFields) {
+    formFields = JSON.parse(formFields)
+  }
 
   return (
-    <Container>
-      <FlexColumn>
-        <Top>
-          <Title>
-            <TitleText>Preview contract</TitleText>
-          </Title>
-        </Top>
-        <Mid>
-          <Divider />
-          <FlexRow>
-            <InputText>Token address</InputText>
-            <Row>
-              <Text>0x7c90cde29F475C3d9687c981dBaC47D344CbDa6d</Text>
-              <CopyIcon style={{ height: "15px" }} />
-            </Row>
-          </FlexRow>
-          <Divider />
-          <FlexRow>
-            <Row>
-              <Item>
-                <InputText>Token name:</InputText>
-                <Text>{formFields.name}</Text>
-              </Item>
-              <Item>
-                <InputText>Token symbol:</InputText>
-                <Text>{formFields.symbol}</Text>
-              </Item>
-            </Row>
-            <Item>
-              <InputText>Decimals:</InputText>
-              <Text>0</Text>
-            </Item>
-          </FlexRow>
-          <Divider />
-          <FlexRow>
-            <Item>
-              <InputText>Token owner:</InputText>
+    <>
+      <TopBar />
+      <Container>
+        <FlexColumn>
+          <Top>
+            <Title>
+              <TitleText>View Deployed Contract</TitleText>
+            </Title>
+          </Top>
+          <Mid>
+            <Divider />
+            <FlexRow>
+              <InputText>Image</InputText>
+              <Image src={formFields?.imageUrl} />
+            </FlexRow>
+            <Divider />
+            <FlexRow>
               <Row>
-                <Text>0x7c90cde29F475C3d9687c981dBaC47D344CbDa6d</Text>
-                <CopyIcon style={{ height: "15px" }} />
+                <Item>
+                  <InputText>NFT name:</InputText>
+                  <Text>{formFields?.name}</Text>
+                </Item>
+                <Item>
+                  <InputText>NFT Quantity:</InputText>
+                  <Text>{formFields?.supply}</Text>
+                </Item>
+                <Item>
+                  <InputText>NFT symbol:</InputText>
+                  <Text>{formFields?.symbol}</Text>
+                </Item>
               </Row>
-            </Item>
-          </FlexRow>
-          <Divider />
-        </Mid>
-      </FlexColumn>
-    </Container>
+            </FlexRow>
+            <Divider />
+            <FlexRow>
+              <Item>
+                <InputText>NFT owner:</InputText>
+                <Row>
+                  <Text>GJzjoKWuqvBerMCVg9itJVLH1y6ZAqGgPsXkXd954xLB</Text>
+                  <CopyIcon style={{ height: "15px" }} />
+                </Row>
+              </Item>
+            </FlexRow>
+            <Divider />
+          </Mid>
+        </FlexColumn>
+      </Container>
+    </>
   );
 };
+
+const Image = styled.img`
+width: 200px;
+height: 200px;
+object-fit: cover;
+`
 
 const Container = styled.div`
   background-color: #f9f9f9;

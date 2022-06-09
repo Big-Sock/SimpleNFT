@@ -1,6 +1,9 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletDialogButton } from '@solana/wallet-adapter-material-ui';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import styled from 'styled-components'
+import { NavLink, useHistory } from "react-router-dom";
+
 
 import {
 	MintLayout,
@@ -18,7 +21,8 @@ const TOKEN_METADATA_PROGRAM_ID = new web3.PublicKey('metaqbxxUerdq28cj1RbAWkYQm
 
 export const CreateCandyMachine = () => {
 	const { connection } = useConnection();
-    const wallet = useWallet();
+	const wallet = useWallet();
+	let history = useHistory();
 
 	const create = async () => {
 		const payer = wallet.publicKey;
@@ -71,10 +75,10 @@ export const CreateCandyMachine = () => {
 				collectionMint.publicKey,
 				associatedTokenAccount,
 				payer,
-				1,
+				"1",
 				[],
 				TOKEN_PROGRAM_ID,
-			),
+			)
 			// Token Metadata Program: Create Metadata Accounts v2 (collection metadata, collection mint, owner, owner, owner)
 			// Token Metadata Program: V3 Create Master Edition (collection master edition, collection mint, owner * 3, collection metadata)
 			// Candy Machine: Set Collection (candy machine, owner, collection PDA, owner, collection metadata, collection mint, collection master edition, collection authority record)
@@ -86,7 +90,7 @@ export const CreateCandyMachine = () => {
 		const signature = await wallet.sendTransaction(
 			transaction,
 			connection,
-			{signers: [collectionMint]}
+			{ signers: [collectionMint] }
 		);
 		// const signature = await web3.sendAndConfirmTransaction(
 		// 	connection,
@@ -95,13 +99,56 @@ export const CreateCandyMachine = () => {
 		// );
 		console.log('signature', signature);
 		connection.onSignature(signature, (result, context) => {
-			if (result.err)
+			if (result.err) {
 				console.log('Transaction rejected.');
-			else
+				history.push('/view_contract')
+			}
+			else {
 				console.log('Transaction confirmed.');
+				history.push('/view_contract')
+			}
 		}, 'processed');
 	}
 
-	if (!wallet.connected) return <WalletMultiButton>Connect</WalletMultiButton>
-	return <button onClick={create}>button</button>
+
+	return (
+		<Container>
+			<Button>
+				{!wallet.connected ?
+					<WalletMultiButton>Connect</WalletMultiButton>
+					:
+					<DeployButton onClick={create}>Deploy</DeployButton>
+				}
+			</Button>
+		</Container>
+	)
 }
+
+const Container = styled.div`
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-top: 50px;
+`
+
+const Button = styled.div`
+
+`
+
+const DeployButton = styled.div`
+	width: 100px;
+	height: 40px;
+	background-color: #ed3724;
+	color: #fff;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	&:hover {
+		box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+	}
+`;
